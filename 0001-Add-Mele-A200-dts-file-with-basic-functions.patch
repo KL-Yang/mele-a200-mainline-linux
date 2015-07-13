@@ -1,46 +1,37 @@
-From ec36849358b529da12bb3802125dccbb2c1c3bfa Mon Sep 17 00:00:00 2001
+From 10a0bb613c4688b157b45ffe069825069585d76a Mon Sep 17 00:00:00 2001
 From: YangKunlun <yangkunlun@gmail.com>
-Date: Fri, 3 Jul 2015 23:18:15 +0800
-Subject: [PATCH] add mele-a200 support, not complete yet!
+Date: Mon, 13 Jul 2015 22:48:59 +0800
+Subject: [PATCH] Add Mele-A200 dts file with basic functions
 
+http://linux-sunxi.org/Mele_A200
 ---
- arch/arm/boot/dts/Makefile                 |   4 +-
- arch/arm/boot/dts/sun5i-a10s-mele-a200.dts | 153 +++++++++++++++++++++++++++++
- 2 files changed, 156 insertions(+), 1 deletion(-)
+ arch/arm/boot/dts/Makefile                 |   1 +
+ arch/arm/boot/dts/sun5i-a10s-mele-a200.dts | 151 +++++++++++++++++++++++++++++
+ 2 files changed, 152 insertions(+)
  create mode 100644 arch/arm/boot/dts/sun5i-a10s-mele-a200.dts
 
 diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-index 992736b..333b2d8 100644
+index 246473a..339a26b 100644
 --- a/arch/arm/boot/dts/Makefile
 +++ b/arch/arm/boot/dts/Makefile
-@@ -536,6 +536,7 @@ dtb-$(CONFIG_MACH_SUN4I) += \
+@@ -563,6 +563,7 @@ dtb-$(CONFIG_MACH_SUN4I) += \
  	sun4i-a10-pcduino.dtb
  dtb-$(CONFIG_MACH_SUN5I) += \
- 	sun5i-a10s-mk802.dtb \
+ 	sun5i-a10s-auxtek-t004.dtb \
 +	sun5i-a10s-mele-a200.dtb \
+ 	sun5i-a10s-mk802.dtb \
  	sun5i-a10s-olinuxino-micro.dtb \
  	sun5i-a10s-r7-tv-dongle.dtb \
- 	sun5i-a13-hsg-h702.dtb \
-@@ -546,7 +547,8 @@ dtb-$(CONFIG_MACH_SUN6I) += \
- 	sun6i-a31-colombus.dtb \
- 	sun6i-a31-hummingbird.dtb \
- 	sun6i-a31-m9.dtb \
--	sun6i-a31s-cs908.dtb
-+	sun6i-a31s-cs908.dtb \
-+	sun6i-a31s-tmb2200ra.dtb
- dtb-$(CONFIG_MACH_SUN7I) += \
- 	sun7i-a20-bananapi.dtb \
- 	sun7i-a20-bananapro.dtb \
 diff --git a/arch/arm/boot/dts/sun5i-a10s-mele-a200.dts b/arch/arm/boot/dts/sun5i-a10s-mele-a200.dts
 new file mode 100644
-index 0000000..5b0bcca
+index 0000000..3c63455
 --- /dev/null
 +++ b/arch/arm/boot/dts/sun5i-a10s-mele-a200.dts
-@@ -0,0 +1,153 @@
+@@ -0,0 +1,151 @@
 +/*
-+ * Copyright 2013 Maxime Ripard
++ * Copyright 2015 Yangkunlun
 + *
-+ * Maxime Ripard <maxime.ripard@free-electrons.com>
++ * Yangkunlun <yangkunlun@gmail.com>
 + *
 + * This file is dual-licensed: you can use it either under the terms
 + * of the GPL or the X11 license, at your option. Note that this dual
@@ -95,13 +86,11 @@ index 0000000..5b0bcca
 +#include <dt-bindings/pinctrl/sun4i-a10.h>
 +
 +/ {
-+	model = "Olimex A10s-Olinuxino Micro";
-+	compatible = "olimex,a10s-olinuxino-micro", "allwinner,sun5i-a10s";
++	model = "Mele A10s-Mele-A200";
++	compatible = "mele,a10s-mele-a200", "allwinner,sun5i-a10s";
 +
 +	aliases {
 +		serial0 = &uart0;
-+		serial1 = &uart2;
-+		serial2 = &uart3;
 +	};
 +
 +	soc@01c00000 {
