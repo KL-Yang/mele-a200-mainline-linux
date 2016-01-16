@@ -1,6 +1,6 @@
-From 0b536d08ad1442240cb80bccc7183fcd7146212b Mon Sep 17 00:00:00 2001
+From 76a160f2299cb19749e4c2adec09c92b1ed82c68 Mon Sep 17 00:00:00 2001
 From: YangKunlun <yangkunlun@gmail.com>
-Date: Sun, 8 Nov 2015 21:28:20 +0800
+Date: Fri, 15 Jan 2016 23:28:47 +0800
 Subject: [PATCH] Add dts support for Mele-A200 TV player
 
 The mmc, ethernet, wifi, hdmi and two usb ports all working.
@@ -11,12 +11,12 @@ The mmc, ethernet, wifi, hdmi and two usb ports all working.
  create mode 100644 arch/arm/boot/dts/sun5i-a10s-mele-a200.dts
 
 diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-index bb8fa02..bbea7db 100644
+index 30bbc37..e699ff0 100644
 --- a/arch/arm/boot/dts/Makefile
 +++ b/arch/arm/boot/dts/Makefile
-@@ -588,6 +588,7 @@ dtb-$(CONFIG_MACH_SUN4I) += \
- 	sun4i-a10-pcduino.dtb
+@@ -608,6 +608,7 @@ dtb-$(CONFIG_MACH_SUN4I) += \
  dtb-$(CONFIG_MACH_SUN5I) += \
+ 	sun5i-a10s-auxtek-t003.dtb \
  	sun5i-a10s-auxtek-t004.dtb \
 +	sun5i-a10s-mele-a200.dtb \
  	sun5i-a10s-mk802.dtb \
