@@ -100,13 +100,13 @@
 };
 
 &mmc0 {
-    pinctrl-names = "default";
-    pinctrl-0 = <&mmc0_pins_a>, <&mmc0_cd_pin_olinuxino_micro>;
-    vmmc-supply = <&reg_vcc3v3>;
-    bus-width = <4>;
-    cd-gpios = <&pio 6 1 GPIO_ACTIVE_HIGH>; /* PG1 */
-    cd-inverted;
-    status = "okay";
+	pinctrl-names = "default";
+	pinctrl-0 = <&mmc0_pins_a>, <&mmc0_cd_pin_olinuxino_micro>;
+	vmmc-supply = <&reg_vcc3v3>;
+	bus-width = <4>;
+	cd-gpios = <&pio 6 1 GPIO_ACTIVE_HIGH>; /* PG1 */
+	cd-inverted;
+	status = "okay";
 };
 
 &ohci0 {
@@ -159,10 +159,10 @@
 };
 
 &usbphy {
-    pinctrl-names = "default";
+	pinctrl-names = "default";
 	pinctrl-0 = <&usb0_id_detect_pin>, <&usb0_vbus_detect_pin>;
 	usb0_id_det-gpios = <&pio 6 13 GPIO_ACTIVE_HIGH>; /* PG13 */
 	usb0_vbus-supply = <&reg_usb0_vbus>;
-    usb1_vbus-supply = <&reg_vcc5v0>;
-    status = "okay";
+	usb1_vbus-supply = <&reg_vcc5v0>;
+	status = "okay";
 };
