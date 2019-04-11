@@ -69,7 +69,7 @@
 
 &emac {
 	pinctrl-names = "default";
-	pinctrl-0 = <&emac_pins_a>;
+	pinctrl-0 = <&emac_pa_pins>;
 	phy = <&phy1>;
 	status = "okay";
 };
@@ -78,9 +78,11 @@
 	status = "okay";
 };
 
+&hdmi {
+	status = "okay";
+};
+
 &i2c0 {
-	pinctrl-names = "default";
-	pinctrl-0 = <&i2c0_pins_a>;
 	status = "okay";
 
 	axp152: pmic@30 {
@@ -100,13 +102,50 @@
 };
 
 &mmc0 {
+    vmmc-supply = <&reg_vcc3v3>;
+    bus-width = <4>;
+    cd-gpios = <&pio 6 1 GPIO_ACTIVE_HIGH>; /* PG1 */
+    cd-inverted;
+    status = "okay";
+};
+
+&nfc {
 	pinctrl-names = "default";
-	pinctrl-0 = <&mmc0_pins_a>, <&mmc0_cd_pin_olinuxino_micro>;
-	vmmc-supply = <&reg_vcc3v3>;
-	bus-width = <4>;
-	cd-gpios = <&pio 6 1 GPIO_ACTIVE_HIGH>; /* PG1 */
-	cd-inverted;
+	pinctrl-0 = <&nand_pins &nand_cs0_pin &nand_rb0_pin>;
 	status = "okay";
+
+	nand@0 {
+		#address-cells = <2>;
+		#size-cells = <2>;
+		reg = <0>;
+		allwinner,rb = <0>;
+		nand-ecc-mode = "hw";
+
+		boot0@0 {
+			label = "boot0";
+			reg = /bits/ 64 <0x0 0x200000>;
+		};
+
+		boot0-rescue@200000 {
+			label = "boot0-rescue";
+			reg = /bits/ 64 <0x200000 0x200000>;
+		};
+
+		uboot@400000 {
+			label = "uboot";
+			reg = /bits/ 64 <0x400000 0x200000>;
+		};
+
+		uboot-rescue@600000 {
+			label = "uboot-rescue";
+			reg = /bits/ 64 <0x600000 0x200000>;
+		};
+
+		main@800000 {
+			label = "main";
+			reg = /bits/ 64 <0x800000 0xff800000>;
+		};
+	};
 };
 
 &ohci0 {
@@ -118,7 +157,7 @@
 };
 
 &pio {
-    mmc0_cd_pin_olinuxino_micro: mmc0_cd_pin@0 {
+    	mmc0_cd_pin_olinuxino_micro: mmc0_cd_pin@0 {
         	allwinner,pins = "PG1";
 		allwinner,function = "gpio_in";
 		allwinner,drive = <SUN4I_PINCTRL_10_MA>;
@@ -143,13 +182,9 @@
 	status = "okay";
 };
 
-&usb0_vbus_pin_a {
-	allwinner,pins = "PD25";
-};
-
 &uart0 {
 	pinctrl-names = "default";
-	pinctrl-0 = <&uart0_pins_a>;
+	pinctrl-0 = <&uart0_pb_pins>;
 	status = "okay";
 };
 
@@ -159,10 +194,10 @@
 };
 
 &usbphy {
-	pinctrl-names = "default";
+    pinctrl-names = "default";
 	pinctrl-0 = <&usb0_id_detect_pin>, <&usb0_vbus_detect_pin>;
 	usb0_id_det-gpios = <&pio 6 13 GPIO_ACTIVE_HIGH>; /* PG13 */
 	usb0_vbus-supply = <&reg_usb0_vbus>;
-	usb1_vbus-supply = <&reg_vcc5v0>;
-	status = "okay";
+    usb1_vbus-supply = <&reg_vcc5v0>;
+    status = "okay";
 };
