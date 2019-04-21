@@ -1,7 +1,7 @@
 /*
- * Copyright 2013 Maxime Ripard
+ * Copyright 2019 YangKunlun
  *
- * Maxime Ripard <maxime.ripard@free-electrons.com>
+ * Yangkunlun <yangkunlun@gmail.com>
  *
  * This file is dual-licensed: you can use it either under the terms
  * of the GPL or the X11 license, at your option. Note that this dual
@@ -51,7 +51,7 @@
 
 / {
 	model = "Mele A10s-Mele-A200";
-	compatible = "olimex,a10s-olinuxino-micro", "allwinner,sun5i-a10s";
+	compatible = "allwinner,sun5i-a10s";
 
 	aliases {
 		serial0 = &uart0;
