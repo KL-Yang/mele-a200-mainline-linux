@@ -1,0 +1,24 @@
+From 42fcec6df70ec056a3182460d1d4b08b5f0a7c73 Mon Sep 17 00:00:00 2001
+From: yangkunlun <yangkunlun@gmail.com>
+Date: Sun, 21 Apr 2019 21:48:05 +0800
+Subject: [PATCH 1/2] enable the Makefile for mele-a10s dtb.
+
+---
+ arch/arm/dts/Makefile | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
+index 0e2ffdb87f..f1609df830 100644
+--- a/arch/arm/dts/Makefile
++++ b/arch/arm/dts/Makefile
+@@ -351,6 +351,7 @@ dtb-$(CONFIG_MACH_SUN5I) += \
+ 	sun5i-a10s-auxtek-t004.dtb \
+ 	sun5i-a10s-mk802.dtb \
+ 	sun5i-a10s-olinuxino-micro.dtb \
++	sun5i-a10s-mele-a200.dtb \
+ 	sun5i-a10s-r7-tv-dongle.dtb \
+ 	sun5i-a10s-wobo-i5.dtb \
+ 	sun5i-a13-ampe-a76.dtb \
+-- 
+2.11.0
+
