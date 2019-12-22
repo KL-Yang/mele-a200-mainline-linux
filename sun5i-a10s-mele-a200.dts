@@ -78,10 +78,6 @@
 	status = "okay";
 };
 
-&hdmi {
-	status = "okay";
-};
-
 &i2c0 {
 	status = "okay";
 
@@ -109,45 +105,6 @@
     status = "okay";
 };
 
-&nfc {
-	pinctrl-names = "default";
-	pinctrl-0 = <&nand_pins &nand_cs0_pin &nand_rb0_pin>;
-	status = "okay";
-
-	nand@0 {
-		#address-cells = <2>;
-		#size-cells = <2>;
-		reg = <0>;
-		allwinner,rb = <0>;
-		nand-ecc-mode = "hw";
-
-		boot0@0 {
-			label = "boot0";
-			reg = /bits/ 64 <0x0 0x200000>;
-		};
-
-		boot0-rescue@200000 {
-			label = "boot0-rescue";
-			reg = /bits/ 64 <0x200000 0x200000>;
-		};
-
-		uboot@400000 {
-			label = "uboot";
-			reg = /bits/ 64 <0x400000 0x200000>;
-		};
-
-		uboot-rescue@600000 {
-			label = "uboot-rescue";
-			reg = /bits/ 64 <0x600000 0x200000>;
-		};
-
-		main@800000 {
-			label = "main";
-			reg = /bits/ 64 <0x800000 0xff800000>;
-		};
-	};
-};
-
 &ohci0 {
 	status = "okay";
 };
@@ -157,8 +114,8 @@
 };
 
 &pio {
-    	mmc0_cd_pin_olinuxino_micro: mmc0_cd_pin@0 {
-        	allwinner,pins = "PG1";
+    mmc0_cd_pin_olinuxino_micro: mmc0_cd_pin@0 {
+        allwinner,pins = "PG1";
 		allwinner,function = "gpio_in";
 		allwinner,drive = <SUN4I_PINCTRL_10_MA>;
 		allwinner,pull = <SUN4I_PINCTRL_PULL_UP>;
